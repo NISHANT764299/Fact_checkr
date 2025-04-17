@@ -16,7 +16,6 @@ def index():
         inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
         with torch.no_grad():
             outputs = model(**inputs)
-            print("Logits:", outputs.logits)  # Print logits for debugging
             prediction = torch.argmax(outputs.logits, dim=1).item()
             result = "🟢 Real News" if prediction == 1 else "🔴 Fake News" 
 
